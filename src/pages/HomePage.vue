@@ -1,14 +1,14 @@
 <template>
   <ContainerDefault>
-    <v-row>
-      <v-col cols="12" sm="4">
+    <v-row dense class="d-flex justify-start">
+      <v-col cols="12" sm="3" class="mr-4">
         <CardDashboard
           :card-title="'Categorias'"
           :card-value="totalCategories"
           card-icon="mdi-shape-outline"
         />
       </v-col>
-      <v-col cols="12" sm="4">
+      <v-col cols="12" sm="3" class="mr-4">
         <CardDashboard
           card-title="Produtos"
           :card-value="totalProducts"
@@ -16,6 +16,22 @@
         />
       </v-col>
     </v-row>
+    <div class="mt-15 text-grey-darken-1">
+      <h3 class="text-h6 mb-2">Sobre este Projeto</h3>
+      <p>
+        Este aplicativo foi desenvolvido como parte do
+        <strong>Curso Vue.js Expert</strong>
+        (<a href="https://cursovuejs.com.br/" target="_blank">cursovuejs.com.br</a>).
+      </p>
+      <p>
+        O objetivo é demonstrar na prática o uso de tecnologias como
+        <strong>Vue.js</strong>, <strong>Vite</strong>, <strong>Vuetify</strong> e consumo de dados
+        por meio de uma <strong>API REST</strong>.
+      </p>
+      <p class="mb-0">
+        Este é um projeto de estudo criado para fins educacionais e para compor meu portfólio.
+      </p>
+    </div>
   </ContainerDefault>
 </template>
 

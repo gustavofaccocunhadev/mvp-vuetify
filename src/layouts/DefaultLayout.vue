@@ -2,7 +2,12 @@
   <v-layout>
     <v-app-bar color="primary">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"> </v-app-bar-nav-icon>
-      <v-toolbar-title>Meu Projeto </v-toolbar-title>
+      <v-toolbar-title>
+        <div class="d-flex align-center">
+          <img src="/logo-mvp.png" alt="Logo" height="32" class="mr-2" />
+          <span>Gustavo Cunha - MVP Vuetify</span>
+        </div>
+      </v-toolbar-title>
 
       <template v-slot:append>
         <v-btn icon="mdi-logout" @click="dialogLogout = true"></v-btn>
@@ -21,10 +26,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main style="height: 100dvh">
+    <v-main>
       <router-view />
       <v-dialog v-model="dialogLogout" max-width="400">
-        <v-card prepend-icon="mdi-logout" title="Deseja Encessar a sesão??">
+        <v-card prepend-icon="mdi-logout" title="Deseja Encessar a sesão?">
           <template v-slot:actions>
             <v-spacer></v-spacer>
             <v-btn @click="handleLogout"> Sim </v-btn>
@@ -41,7 +46,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const dialogLogout = ref(false)
-const drawer = ref(false)
+const drawer = ref(true)
 const items = [
   {
     title: 'Dashboard',

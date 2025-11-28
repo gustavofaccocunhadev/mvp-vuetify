@@ -6,6 +6,22 @@
           <v-img class="mx-auto mb-4" max-width="300" src="/undraw/login-icon.svg"></v-img>
           <h1 class="text-primary">Bem vindo</h1>
           <p class="text-grey-darken-1">Sua plataforma de gerenciamento de estoque.</p>
+          <div class="ma-15 text-left text-grey-darken-1">
+            <h3 class="text-h6 mb-2">Sobre este Projeto</h3>
+            <p>
+              Este aplicativo foi desenvolvido como parte do
+              <strong>Curso Vue.js Expert</strong>
+              (<a href="https://cursovuejs.com.br/" target="_blank">cursovuejs.com.br</a>).
+            </p>
+            <p>
+              O objetivo é demonstrar na prática o uso de tecnologias como
+              <strong>Vue.js</strong>, <strong>Vite</strong>, <strong>Vuetify</strong> e consumo de
+              dados por meio de uma <strong>API REST</strong>.
+            </p>
+            <p class="mb-0">
+              Este é um projeto de estudo criado para fins educacionais e para compor meu portfólio.
+            </p>
+          </div>
         </div>
       </v-col>
       <v-col class="d-flex align-center justify-center" cols="12" md="6">

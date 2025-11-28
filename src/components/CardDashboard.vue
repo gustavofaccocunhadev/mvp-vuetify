@@ -2,7 +2,7 @@
   <v-card class="mx-auto py-4" max-width="368">
     <v-card-item :title="props.cardTitle"> </v-card-item>
 
-    <v-card-text class="py-0">
+    <v-card-text>
       <v-row align="center" no-gutters>
         <v-col class="text-h2" cols="6"> {{ props.cardValue }}</v-col>
 

@@ -23,32 +23,49 @@ import { useNotification } from '@/composables/useNotification'
 import { useProductService } from '@/services'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useCategorieService } from '@/services'
 
 const router = useRouter()
 const productServices = useProductService()
+const categoryService = useCategorieService()
 const notification = useNotification()
 const loading = ref(false)
 
 const headers = [
   { title: 'Nome', value: 'name' },
+  { title: 'Categoria', value: 'category_name' },
   { title: 'Status', value: 'status' },
-  { title: 'Preço', value: 'price' },
+  { title: 'Preço', value: `price` },
   { title: 'Ações', value: 'actions', align: 'end' },
 ]
 
+const categories = ref([])
 const products = ref([])
 
 async function getProducts() {
   try {
     loading.value = true
-    products.value = await productServices.getAll()
+    const data = await productServices.getAll()
+
+    products.value = data.map((p) => ({
+      ...p,
+      price: (p.price / 100).toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }),
+      category_name: categories.value.find((c) => c.id === p.category_id)?.name || 'Sem categoria',
+    }))
   } catch (error) {
     if (error.response) {
-      notification.error(
-        'Não foi possível buscar os produtos. Erro:' +
-          (error.response?.data?.detail || error.message || error.code || ''),
-        9000,
-      )
+      if (error.response.data.detail === 'Products not found') {
+        products.value = []
+      } else {
+        notification.error(
+          'Não foi possível buscar os produtos. Erro:' +
+            (error.response?.data?.detail || error.message || error.code || ''),
+          9000,
+        )
+      }
     }
   } finally {
     loading.value = false
@@ -75,7 +92,22 @@ async function deleteProduct(id) {
   }
 }
 
-onMounted(() => {
-  getProducts()
+async function getCategories() {
+  try {
+    categories.value = await categoryService.getAll()
+  } catch (error) {
+    if (error.response) {
+      notification.error(
+        'Não foi possível buscar as categorias. Erro:' +
+          (error.response?.data?.detail || error.message || error.code || ''),
+        9000,
+      )
+    }
+  }
+}
+
+onMounted(async () => {
+  await getCategories()
+  await getProducts()
 })
 </script>

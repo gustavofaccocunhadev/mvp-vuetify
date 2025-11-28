@@ -92,7 +92,12 @@ function handleSubmit() {
 
 async function createProduct() {
   try {
-    await productServices.create(formProduct.value)
+    const payload = {
+      ...formProduct.value,
+      price: Math.round(formProduct.value.price * 100), // converte para centavos
+    }
+    await productServices.create(payload)
+
     notification.success('Produto cadastrada com sucesso.')
     router.push({ name: 'product' })
   } catch (error) {
@@ -108,7 +113,12 @@ async function createProduct() {
 
 async function updateProduct(id) {
   try {
-    await productServices.update(id, formProduct.value)
+    const payload = {
+      ...formProduct.value,
+      price: Math.round(formProduct.value.price * 100), // converte para centavos
+    }
+
+    await productServices.update(id, payload)
     notification.success('Produto atualizado com sucesso.')
     router.push({ name: 'product' })
   } catch (error) {
@@ -128,7 +138,7 @@ async function getProduct(id) {
     formProduct.value = {
       name: data.name,
       description: data.description,
-      price: data.price,
+      price: data.price / 100,
       category_id: data.category_id,
       status: data.status,
     }
