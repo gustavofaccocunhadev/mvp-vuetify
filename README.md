@@ -1,4 +1,5 @@
-<img width="2000" height="1414" alt="Módulo--Vuetify--(1)" src="https://github.com/user-attachments/assets/531a3f86-76a7-4ef5-9da5-333d8acf44ac" />
+<img width="2000" height="1414" alt="Módulo--Vuetify" src="https://github.com/user-attachments/assets/af290fad-6d11-4885-8b5d-83c78d1581ca" />
+
 # modulo5-vuetify
 
 This template should help get you started developing with Vue 3 in Vite.
